@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Portfolio — Filmmaker / Designer / Creative Director</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="grain-overlay" aria-hidden="true"></div>
+
+	<header class="topbar">
+		<div class="brand">Phelokazi</div>
+		<nav class="nav">
+			<a href="#work">Work</a>
+			<a href="#about">About</a>
+			<a href="#contact">Contact</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero">
+			<video class="hero-video" autoplay muted loop playsinline poster="phelo1.jpeg">
+				<source src="phelo.mp4" type="video/mp4">
+			</video>
+			<div class="scanline" aria-hidden="true"></div>
+
+			<div class="hero-content">
+				<h1 class="name">Phelokazi</h1>
+				<p class="role">Software Engineer • Full‑stack • Creative Technologist</p>
+				<div class="hero-terminal" aria-hidden="true">
+					<pre class="terminal"><code id="terminal-text"></code><span class="term-cursor">▌</span></pre>
+				</div>
+				<a class="cta work-link" href="#work">Explore Projects</a>
+			</div>
+		</section>
+
+		<section id="work" class="work">
+			<h2 class="section-title">Selected Work</h2>
+			<div class="grid">
+				<article class="tile" tabindex="0" role="button" aria-label="Open Project realtime-dashboard" data-full="phelo2.jpeg">
+					<div class="thumb" style="background-image:url('phelo2.jpeg')"></div>
+					<div class="tile-meta">
+						<h3>realtime-dashboard</h3>
+						<p class="tile-desc">Realtime metrics and collaborative visualizations.</p>
+					</div>
+				</article>
+				<article class="tile" tabindex="0" role="button" aria-label="Open Project atlas-ui" data-full="phelo3.jpeg">
+					<div class="thumb" style="background-image:url('phelo3.jpeg')"></div>
+					<div class="tile-meta">
+						<h3>atlas-ui</h3>
+						<p class="tile-desc">Design system and component library for enterprise apps.</p>
+					</div>
+				</article>
+				<article class="tile" tabindex="0" role="button" aria-label="Open Project ml-prototype" data-full="phelo4.jpeg">
+					<div class="thumb" style="background-image:url('phelo4.jpeg')"></div>
+					<div class="tile-meta">
+						<h3>ml-prototype</h3>
+						<p class="tile-desc">Prototype ML pipelines for feature discovery.</p>
+					</div>
+				</article>
+				<article class="tile" tabindex="0" role="button" aria-label="Open Project visualizer" data-full="phelo5.jpeg">
+					<div class="thumb" style="background-image:url('phelo5.jpeg')"></div>
+					<div class="tile-meta">
+						<h3>visualizer</h3>
+						<p class="tile-desc">Interactive data experiences and prototypes.</p>
+					</div>
+				</article>
+				<article class="tile" tabindex="0" role="button" aria-label="Open Project lumen-ui" data-full="phelo6.jpeg">
+					<div class="thumb" style="background-image:url('phelo6.jpeg')"></div>
+					<div class="tile-meta">
+						<h3>lumen-ui</h3>
+						<p class="tile-desc">Motion-first component experiments and interactions.</p>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="about" class="about">
+			<h2 class="section-title">About</h2>
+			<p>I direct and design visual narratives with a cinematic sensibility — from concept through post. This is my portfolio of directed work, branded films and commercial projects. Available for commissions and collaboration.</p>
+		</section>
+
+		<footer id="contact" class="footer">
+			<div class="contact-inner">
+				<a href="mailto:hello@example.com" class="email">hello@example.com</a>
+				<p class="legal">© <span id="year"></span> Phelokazi</p>
+			</div>
+		</footer>
+	</main>
+
+	<div id="cursor" class="cursor"><span class="cursor-label"></span></div>
+
+	<!-- Lightbox / modal -->
+	<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Project viewer">
+		<button class="lightbox-close" aria-label="Close">✕</button>
+		<img class="lightbox-image" src="" alt="Project image">
+		<div class="lightbox-caption"></div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,122 @@
+:root{
+	--bg:#071229; /* deep cinematic navy */
+	--muted:#9fb3c8;
+	--accent:#e6f7ff;
+	--glass: rgba(230,247,255,0.04);
+	--gold: #ffd58a;
+	--teal: #6ef3ff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	background:var(--bg);
+	color:#eee;
+	font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	cursor:none; /* custom cursor */
+}
+
+.grain-overlay{
+	pointer-events:none;
+	position:fixed;inset:0;z-index:9999;mix-blend-mode:overlay;opacity:0.12;background-image:
+		radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+	background-size:3px 3px;filter:contrast(0.9) saturate(1.02);
+}
+
+.topbar{position:fixed;top:20px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:center;z-index:60}
+.brand{font-family:'Playfair Display', serif;font-weight:700;font-size:18px;letter-spacing:0.02em}
+.nav{transition:opacity .25s ease,transform .25s ease;opacity:0;transform:translateY(-6px)}
+.topbar:hover .nav{opacity:1;transform:none}
+.nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.03) saturate(0.9) brightness(0.45);transform:scale(1.02)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,18,41,0.1), rgba(2,6,20,0.6));}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 600px at 10% 20%, rgba(110,243,255,0.04), transparent 15%), radial-gradient(1000px 600px at 90% 80%, rgba(255,213,138,0.03), transparent 18%);mix-blend-mode:screen;pointer-events:none}
+
+/* cinematic scanline */
+.hero .scanline{position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);opacity:0.06;animation:scan 6s linear infinite}
+@keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px}
+.name{font-family:'Playfair Display', serif;font-size:clamp(36px,8vw,96px);margin:0;letter-spacing:-0.02em;color:var(--accent);font-weight:800}
+.name{
+	background:linear-gradient(90deg,var(--accent) 0%, var(--teal) 45%, var(--gold) 80%);
+	-webkit-background-clip:text;background-clip:text;color:transparent;
+	animation: shimmer 5.5s linear infinite;
+}
+
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.role{color:var(--muted);margin-top:8px;margin-bottom:20px;font-size:18px}
+.cta{display:inline-block;padding:14px 26px;border-radius:28px;background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--accent);text-decoration:none;font-weight:600}
+.cta:hover{background:var(--glass)}
+
+/* Terminal widget in hero */
+.hero-terminal{margin-top:18px;display:flex;justify-content:center}
+.terminal{background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:8px;color:var(--muted);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;font-size:13px;min-width:320px;max-width:680px}
+.term-cursor{color:var(--accent);margin-left:6px;animation:blink 1s steps(2,end) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Update tile meta visuals for tech portfolio */
+.tile-meta{position:absolute;left:18px;right:18px;bottom:18px;color:var(--accent);pointer-events:none;backdrop-filter:blur(4px)}
+.tile h3{margin:0;font-size:16px}
+.tile-desc{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+/* Small animated accents */
+.grid .tile::before{content:'';position:absolute;top:14px;left:14px;width:10px;height:10px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--gold));box-shadow:0 10px 30px rgba(110,243,255,0.06);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .45s}
+.tile:hover::before,.tile:focus::before{opacity:1;transform:none}
+
+.work{padding:96px 6vw;background:linear-gradient(180deg,transparent rgba(2,6,20,0.06));}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;margin:0 0 28px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tile{position:relative;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:0;border-radius:12px;overflow:hidden;cursor:pointer;outline:none;border:1px solid rgba(255,255,255,0.03)}
+.thumb{height:260px;background-size:cover;background-position:center;border-radius:0;box-shadow:0 30px 80px rgba(3,10,20,0.5);transition:transform .7s cubic-bezier(.2,.9,.2,1),filter .5s}
+.tile-meta{position:absolute;left:18px;right:18px;bottom:18px;color:var(--accent);pointer-events:none}
+.tile h3{margin:0;font-size:18px}
+.tile-desc{margin:6px 0 0;color:var(--muted);font-size:13px}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(2,6,20,0.5));opacity:0;transition:opacity .35s ease}
+.tile:hover .thumb,.tile:focus .thumb{transform:scale(1.06);filter:brightness(1.02) saturate(1.03)}
+.tile:hover::after,.tile:focus::after{opacity:1}
+.tile{opacity:0;transform:translateY(18px) scale(.995);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.2,1);transition-delay:var(--d,0ms)}
+.tile.animate{opacity:1;transform:none}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,20,0.9), rgba(7,18,41,0.92));z-index:10001}
+.lightbox[aria-hidden="false"]{display:flex}
+.lightbox-image{max-width:86vw;max-height:78vh;border-radius:6px;box-shadow:0 40px 120px rgba(0,0,0,0.7)}
+.lightbox-close{position:absolute;top:28px;right:28px;background:transparent;border:none;color:#fff;font-size:20px;cursor:pointer}
+.lightbox-caption{position:absolute;bottom:30px;color:var(--muted);font-size:14px}
+
+/* Focus states */
+.tile:focus{box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-4px)}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+	.thumb, .name{animation:none;transition:none}
+}
+
+.about{padding:56px 6vw;color:var(--muted)}
+.footer{padding:48px 6vw;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+.contact-inner{display:flex;justify-content:space-between;align-items:center}
+.email{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* Custom cursor */
+.cursor{position:fixed;top:0;left:0;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:999px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.06);z-index:10000;pointer-events:none;backdrop-filter:blur(2px);transition:width .18s ease,height .18s ease,transform .08s ease}
+.cursor .cursor-label{font-size:12px;color:var(--accent);opacity:0;transition:opacity .12s ease}
+.cursor.view{width:160px;border-radius:28px}
+.cursor.view .cursor-label{opacity:1}
+
+/* Hover targets for cursor */
+.work-link:hover ~ .cursor, .work-link:hover + .cursor {}
+.work-link:hover ~ .cursor .cursor-label, .work-link:hover + .cursor .cursor-label{opacity:1}
+
+/* Responsive */
+@media (max-width:900px){
+	.grid{grid-template-columns:repeat(1,1fr)}
+	.thumb{height:200px}
+	.topbar{left:16px;right:16px}
+}
+
